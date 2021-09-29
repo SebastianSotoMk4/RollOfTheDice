@@ -8,32 +8,27 @@ Option Explicit On
 Module RollOfTheDice
 
     Sub Main()
-        Dim randomNumbers(12) As Integer
-        Dim firstDieRoll(6) As Integer
-        For u = 1 To 6
-            firstDieRoll(u) = RollOneDie(6)
-            Console.WriteLine(firstDieRoll(u))
-        Next
-        For u = 1 To 6
-            firstDieRoll(u) = RollOneDie(6)
-            Console.WriteLine(firstDieRoll(u))
-        Next
-        For o = LBound(firstDieRoll) To UBound(firstDieRoll)
-            Console.Write(CStr(o).PadLeft(4))
+        Dim currentRoll(12) As Integer
+
+        For u = 1 To 1000
+            currentRoll((RollOneDie(5) + 1) + (RollOneDie(5) + 1)) += 1
+
         Next
 
-        'For i = 0 To 100
-        '    randomNumbers(RollOneDie(6)) += 2
-
-        'Next
         Console.WriteLine()
 
-        For i = LBound(randomNumbers) To UBound(randomNumbers)
+        For i = LBound(currentRoll) To UBound(currentRoll)
             Console.Write(CStr(i).PadLeft(4))
         Next
 
+        Console.WriteLine()
+
+        For i = LBound(currentRoll) To UBound(currentRoll)
+            Console.Write(CStr(currentRoll(i)).PadLeft(4))
+        Next
 
         Console.ReadLine()
+
     End Sub
     Function RollOneDie(max As Integer) As Integer
         Dim rndNum As Double
@@ -44,22 +39,7 @@ Module RollOfTheDice
         Return NumRnd
     End Function
 
-    Sub CodeStorage()
 
-        Dim randomNumbers(12) As Integer
-        For i = 0 To 100
-            randomNumbers(RollOneDie(6)) += 2
-
-        Next
-
-        For i = LBound(randomNumbers) To UBound(randomNumbers)
-            Console.Write(CStr(i).PadLeft(4))
-        Next
-        Console.WriteLine()
-
-
-
-    End Sub
 
     Sub TestRandom()
         Dim randomNumbers(6) As Integer
