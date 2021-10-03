@@ -14,65 +14,36 @@ Module RollOfTheDice
             currentRoll((RollOneDie(5) + 1) + (RollOneDie(5) + 1)) += 1
 
         Next
+        Console.Write(StrDup(19, " "))
+        Console.WriteLine("Roll Of the Dice")
 
-        Console.WriteLine()
-
+        Console.WriteLine(StrDup(55, "-"))
         For i = LBound(currentRoll) To UBound(currentRoll)
             linePrint += 1
             If linePrint > 2 Then
-                Console.Write(CStr(i).PadLeft(4))
+                Console.Write(CStr(i).PadLeft(4) & "|")
             End If
-
-
         Next
-        linePrint -= 2
         Console.WriteLine()
-
+        Console.WriteLine(StrDup(55, "-"))
         For i = LBound(currentRoll) To UBound(currentRoll)
-            'linePrint += 1
-            'If linePrint > 2 Then
-            '    Console.Write(CStr(currentRoll(i)).PadLeft(4))
-            'End If
             Select Case currentRoll(i)
                 Case = 0
-
+                    'If 0 then do nothing
                 Case <> 0
-                    Console.Write(CStr(currentRoll(i)).PadLeft(4))
+                    Console.Write(CStr(currentRoll(i)).PadLeft(4) & "|")
             End Select
         Next
-
+        Console.WriteLine()
+        Console.WriteLine(StrDup(55, "-"))
         Console.ReadLine()
-
     End Sub
     Function RollOneDie(max As Integer) As Integer
-        Dim rndNum As Double
-        Dim NumRnd As Integer
+        Dim randomDouble As Double
+        Dim randomInteger As Integer
         Randomize(Now.Millisecond)
-        rndNum = System.Math.Floor(CDbl(Rnd() * (max + 1)))
-        NumRnd = CInt(rndNum)
-        Return NumRnd
+        randomDouble = System.Math.Floor(CDbl(Rnd() * (max + 1)))
+        randomInteger = CInt(randomDouble)
+        Return randomInteger
     End Function
-
-
-
-    Sub TestRandom()
-        Dim randomNumbers(6) As Integer
-
-        For i = 0 To 10000
-
-            randomNumbers(RollOneDie(6)) += 1
-        Next
-
-        For i = LBound(randomNumbers) To UBound(randomNumbers)
-            Console.Write(CStr(i).PadLeft(7))
-        Next
-        Console.WriteLine()
-        Console.WriteLine(StrDup(80, "-"))
-
-
-        For i = LBound(randomNumbers) To UBound(randomNumbers)
-            Console.Write(CStr(randomNumbers(i)).PadLeft(7))
-        Next
-    End Sub
 End Module
-'https://elearn.isu.edu/moodle/mod/assign/view.php?id=2180759
