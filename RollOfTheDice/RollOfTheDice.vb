@@ -9,7 +9,7 @@ Module RollOfTheDice
 
     Sub Main()
         Dim currentRoll(12) As Integer
-
+        Dim linePrint As Integer
         For u = 1 To 1000
             currentRoll((RollOneDie(5) + 1) + (RollOneDie(5) + 1)) += 1
 
@@ -18,13 +18,27 @@ Module RollOfTheDice
         Console.WriteLine()
 
         For i = LBound(currentRoll) To UBound(currentRoll)
-            Console.Write(CStr(i).PadLeft(4))
-        Next
+            linePrint += 1
+            If linePrint > 2 Then
+                Console.Write(CStr(i).PadLeft(4))
+            End If
 
+
+        Next
+        linePrint -= 2
         Console.WriteLine()
 
         For i = LBound(currentRoll) To UBound(currentRoll)
-            Console.Write(CStr(currentRoll(i)).PadLeft(4))
+            'linePrint += 1
+            'If linePrint > 2 Then
+            '    Console.Write(CStr(currentRoll(i)).PadLeft(4))
+            'End If
+            Select Case currentRoll(i)
+                Case = 0
+
+                Case <> 0
+                    Console.Write(CStr(currentRoll(i)).PadLeft(4))
+            End Select
         Next
 
         Console.ReadLine()
