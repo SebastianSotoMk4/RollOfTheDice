@@ -6,7 +6,6 @@
 Option Strict On
 Option Explicit On
 Module RollOfTheDice
-
     Sub Main()
         Dim currentRoll(12) As Integer
         Dim linePrint As Integer
@@ -14,27 +13,26 @@ Module RollOfTheDice
         For i = 1 To 1000
             currentRoll((RollOneDie(5)) + (RollOneDie(5))) += 1
         Next
-            Console.Write(StrDup(19, " "))
-            Console.WriteLine("Roll Of the Dice")
-
+        Console.Write(StrDup(19, " "))
+        Console.WriteLine("Roll Of the Dice")
         Console.WriteLine(StrDup(55, "="))
         For i = LBound(currentRoll) To UBound(currentRoll)
-                linePrint += 1
-                If linePrint > 2 Then
-                    Console.Write(CStr(i).PadLeft(4) & "|")
-                End If
-            Next
-            Console.WriteLine()
-            Console.WriteLine(StrDup(55, "-"))
-            For i = LBound(currentRoll) To UBound(currentRoll)
-                Select Case currentRoll(i)
-                    Case = 0
+            linePrint += 1
+            If linePrint > 2 Then
+                Console.Write(CStr(i).PadLeft(4) & "|")
+            End If
+        Next
+        Console.WriteLine()
+        Console.WriteLine(StrDup(55, "-"))
+        For i = LBound(currentRoll) To UBound(currentRoll)
+            Select Case currentRoll(i)
+                Case = 0
                     'If 0 then do nothing
-                    Case <> 0
-                        Console.Write(CStr(currentRoll(i)).PadLeft(4) & "|")
-                End Select
-            Next
-            Console.WriteLine()
+                Case <> 0
+                    Console.Write(CStr(currentRoll(i)).PadLeft(4) & "|")
+            End Select
+        Next
+        Console.WriteLine()
         Console.WriteLine(StrDup(55, "="))
         Console.ReadLine()
     End Sub
